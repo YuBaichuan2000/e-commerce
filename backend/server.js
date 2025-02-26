@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.route.js';
 // import workoutRoutes from './routes/workouts.js';
-// import userRoutes from './routes/users.js';
+import productRoutes from './routes/product.route.js';
 import mongoose from 'mongoose';
 // import cors from 'cors';
 // import passport from 'passport';
@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // app.use('/api/workouts', workoutRoutes);
-// app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
 
 // app.get('*', (req, res) => {
