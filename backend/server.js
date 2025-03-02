@@ -4,6 +4,7 @@ import authRoutes from './routes/auth.route.js';
 // import workoutRoutes from './routes/workouts.js';
 import productRoutes from './routes/product.route.js';
 import couponRoutes from './route/coupon.route.js';
+import paymentRoutes from './route/payment.route.js';
 import mongoose from 'mongoose';
 // import cors from 'cors';
 // import passport from 'passport';
@@ -47,6 +48,7 @@ app.use(cookieParser());
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/coupons', couponRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // app.get('*', (req, res) => {
 //     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
