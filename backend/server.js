@@ -5,6 +5,7 @@ import authRoutes from './routes/auth.route.js';
 import productRoutes from './routes/product.route.js';
 import couponRoutes from './route/coupon.route.js';
 import paymentRoutes from './route/payment.route.js';
+import analyticsRoutes from "./routes/analytics.route.js";
 import mongoose from 'mongoose';
 // import cors from 'cors';
 // import passport from 'passport';
@@ -49,6 +50,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/coupons', couponRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // app.get('*', (req, res) => {
 //     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
