@@ -7,16 +7,28 @@ import LoginPage from "./pages/LoginPage";
 // import CategoryPage from "./pages/CategoryPage";
 
 import Navbar from "./components/Navbar";
-// import { Toaster } from "react-hot-toast";
-// import { useUserStore } from "./stores/useUserStore";
+import { Toaster } from "react-hot-toast";
+import { useUserStore } from "./hooks/useUserStore";
 import { useEffect } from "react";
-// import LoadingSpinner from "./components/LoadingSpinner";
+// import { Home } from "lucide-react";
+// import { L } from "framer-motion/dist/types.d-6pKw1mTI";
+import LoadingSpinner from "./components/LoadingSpinner";
 // import CartPage from "./pages/CartPage";
 // import { useCartStore } from "./stores/useCartStore";
 // import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 // import PurchaseCancelPage from "./pages/PurchaseCancelPage";
 
 function App() {
+
+  const { user, checkAuth, checkingAuth } = useUserStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  if (checkingAuth) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className='min-h-screen bg-gray-900 text-white relative overflow-hidden'>
@@ -29,11 +41,12 @@ function App() {
       <div className='relative z-50 pt-20'>
         <Navbar />
         <Routes>
-          <Route path='/' element={ <HomePage/> }></Route>
-          <Route path='/signup' element={ <SignupPage/> }></Route>
-          <Route path='/login' element={ <LoginPage/> }></Route>
+          <Route path='/' element={ user ? <HomePage /> : <Navigate to="/login" /> }></Route>
+          <Route path='/signup' element={ !user ? <SignupPage /> : <Navigate to="/" /> }></Route>
+          <Route path='/login' element={ !user ? <LoginPage/> : <Navigate to="/" /> }></Route>
         </Routes>
       </div>
+      <Toaster />
       
     </div>
   )
