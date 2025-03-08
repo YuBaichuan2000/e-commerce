@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { Trash, Star } from "lucide-react";
-import { useProductStore } from "../hooks/useProductStore";
+import { useProductStore } from "../hooks/useProductStore.js";
+import { useEffect } from "react";
 
 const ProductsList = () => {
-	const { deleteProduct, toggleFeaturedProduct, products } = useProductStore();
+	const { products, deleteProduct, toggleFeaturedProduct } = useProductStore();
 
-	console.log("products", products);
 
 	return (
 		<motion.div
@@ -51,7 +51,7 @@ const ProductsList = () => {
 					</tr>
 				</thead>
 
-				{/* <tbody className='bg-gray-800 divide-y divide-gray-700'>
+				<tbody className='bg-gray-800 divide-y divide-gray-700'>
 					{products?.map((product) => (
 						<tr key={product._id} className='hover:bg-gray-700'>
 							<td className='px-6 py-4 whitespace-nowrap'>
@@ -94,7 +94,7 @@ const ProductsList = () => {
 							</td>
 						</tr>
 					))}
-				</tbody> */}
+				</tbody>
 			</table>
 		</motion.div>
 	);
